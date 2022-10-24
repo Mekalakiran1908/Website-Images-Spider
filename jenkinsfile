@@ -1,0 +1,21 @@
+pipeline {
+  agent any
+  stages {
+    stage('checkout') {
+      steps {
+       git credentialsId: 'mekalakiran1908_Git_Credentials', url: 'https://github.com/Mekalakiran1908/Website-Images-Spider.git'
+		//sh 'python3 --version'
+      }
+    }
+    stage('build') {
+      steps {
+        sh 'python3 app.py'
+      }
+	}
+	stage('test') {
+      steps {
+        echo 'this job has been tested'
+      }
+    }
+  }
+}
